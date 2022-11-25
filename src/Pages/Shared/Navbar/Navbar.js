@@ -5,11 +5,11 @@ import "../../../Styles/style.css";
 const Navbar = () => {
   const menuItems = (
     <React.Fragment>
-      <li className="hover:text-accent hover:text-lg">
+      <li className="hover:text-accent">
         <Link to="/">Home</Link>
       </li>
       <li tabIndex={0}>
-        <Link className="hover:text-accent hover:text-lg">
+        <Link className="hover:text-accent ">
           Categories
           <svg
             className="fill-current"
@@ -33,10 +33,10 @@ const Navbar = () => {
           </li>
         </ul>
       </li>
-      <li className="hover:text-accent hover:text-lg">
+      <li className="hover:text-accent ">
         <Link to="/myOrders">My Orders</Link>
       </li>
-      <li className="hover:text-accent hover:text-lg">
+      <li className="hover:text-accent ">
         <Link to="/blog">Blog</Link>
       </li>
     </React.Fragment>
