@@ -7,17 +7,42 @@ import { AiOutlineLock } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { useForm } from "react-hook-form";
+import { data } from "autoprefixer";
 
 const Login = () => {
   useTitle("Login");
 
-  const { createUser, providerLogin } = useContext(AuthContext);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
-  const [error, setError] = useState("");
+  const { signIn, providerLogin } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  // Login with email/password
+  const handleLogin = (data) => {
+    // console.log(data);
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        if (user) {
+          reset();
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  // google signin
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = (event) => {
@@ -42,7 +67,7 @@ const Login = () => {
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="w-full text-center text-neutral-content">
         <div className="mx-10 md:mx-20 lg:w-6/12 lg:mx-auto sm:my-28 shadow-2xl bg-base-100 rounded-xl">
-          <form className="card-body">
+          <form onSubmit={handleSubmit(handleLogin)} className="card-body">
             <div className="mx-auto mb-2">
               <FaUserCircle className="text-5xl" />
             </div>
@@ -56,11 +81,15 @@ const Login = () => {
               <div className="input-with-icon">
                 <MdAlternateEmail className="text-cyan-500 w-8 text-lg" />
                 <input
-                  type="text"
+                  type="email"
+                  {...register("email", { required: "Email is required" })}
                   placeholder="example@gmail.com"
                   className="input-box"
                 />
               </div>
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email?.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -69,11 +98,23 @@ const Login = () => {
               <div className="input-with-icon">
                 <AiOutlineLock className="text-cyan-500 w-8 text-lg" />
                 <input
-                  type="text"
+                  type="password"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password must be 6 characters or longer",
+                    },
+                  })}
                   placeholder="password"
                   className="input-box"
                 />
               </div>
+              {errors.password && (
+                <p className="text-red-500 text-sm">
+                  {errors.password?.message}
+                </p>
+              )}
 
               <label className="label">
                 <Link href="/login" className="label-text-alt link link-hover">

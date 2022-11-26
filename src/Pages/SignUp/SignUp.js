@@ -18,32 +18,52 @@ const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const { createUser, providerLogin, updateUser } = useContext(AuthContext);
 
-  const [signUpError, setSignUPError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   // Create new user
   const handleSignUp = (data) => {
-    console.log(data);
-    setSignUPError("");
+    // console.log(data);
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
         // console.log(user);
         handleUpdateUserProfile(data.name, data.photoURL);
+
+        // object to store to usersCollection
+        const users = {
+          name: data.name,
+          email: data.email,
+          role: data.role,
+          image: data.photoURL,
+        };
+
         if (user) {
-          toast.success("User Created Successfully.");
-          navigate(from, { replace: true });
+          // send to DB
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(users),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              console.log(result);
+              toast.success("User created successfully");
+              reset();
+              navigate(from, { replace: true });
+            });
         }
       })
       .catch((error) => {
         console.log(error);
-        setSignUPError(error.message);
       });
   };
 
@@ -58,19 +78,16 @@ const SignUp = () => {
       .catch((e) => console.log(e));
   };
 
-  // Send user info to db
-  const saveUser = (name, email, photoURL) => {
-    const user = { name, email, photoURL };
-  };
-
   // google login
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = (event) => {
     event.preventDefault();
+
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
+        // console.log(user);
         if (user) {
           navigate(from, { replace: true });
         }
@@ -185,7 +202,7 @@ const SignUp = () => {
                   <GrCheckboxSelected className="bg-cyan-500" />
                 </div>
                 <select
-                  {...register("specialty")}
+                  {...register("role")}
                   defaultValue="buyer"
                   className="w-11/12 select select-bordered"
                 >
