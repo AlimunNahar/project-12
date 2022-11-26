@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 import "../../../Styles/style.css";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
   const menuItems = (
     <React.Fragment>
       <li className="hover:text-accent">
@@ -69,7 +78,10 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-3xl site-name">
+        <Link
+          to="/"
+          className="btn btn-ghost normal-case text-xl md:text-2xl lg:text-3xl site-name"
+        >
           <span className="site-name">PureSnuggle</span>
         </Link>
       </div>
@@ -78,14 +90,27 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        <div className="avatar hidden md:block lg:block mr-3">
-          <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img alt="avatar_image" src="https://placeimg.com/192/192/people" />
+        {user?.email ? (
+          <div className="flex avatar gap-x-3">
+            {user?.photoURL ? (
+              <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img alt="" src={user?.photoURL} />
+              </div>
+            ) : (
+              <div>{user?.displayName}</div>
+            )}
+            <button
+              onClick={handleLogOut}
+              className="btn btn-outline glass btn-accent"
+            >
+              Logout
+            </button>
           </div>
-        </div>
-        <Link className="btn btn-outline glass btn-accent" to="/login">
-          Login
-        </Link>
+        ) : (
+          <Link className="btn btn-outline glass btn-accent" to="/login">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

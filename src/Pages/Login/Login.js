@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import useTitle from "../../Hooks/useTitle";
 import "../../Styles/style.css";
 import { FaUserCircle } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import { AiOutlineLock } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   useTitle("Login");
+
+  const { createUser, providerLogin } = useContext(AuthContext);
+
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = (event) => {
+    event.preventDefault();
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        // console.log(user);
+        if (user) {
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((error) => console.error(error));
+  };
   return (
     <div
       className="hero min-h-screen"
@@ -67,9 +91,14 @@ const Login = () => {
               </p>
             </div>
           </form>
+          <div className="flex flex-col w-full border-opacity-50">
+            <div className="divider">Other Sign up option</div>
+          </div>
           <div className="form-control px-8">
-            <hr className="divide-dashed" />
-            <button className="btn glass my-5 active:bg-cyan-800">
+            <button
+              onClick={handleGoogleSignIn}
+              className="btn glass my-5 active:bg-cyan-800"
+            >
               Login With Google
             </button>
           </div>
