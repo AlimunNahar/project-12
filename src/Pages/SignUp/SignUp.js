@@ -87,8 +87,28 @@ const SignUp = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        // console.log(user);
+        console.log(user);
+        const socialUser = {
+          name: user.displayName,
+          email: user.email,
+          role: "buyer",
+          image: user.photoURL,
+        };
         if (user) {
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(socialUser),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              console.log(result);
+              toast.success("User created successfully");
+              reset();
+              navigate(from, { replace: true });
+            });
           navigate(from, { replace: true });
         }
       })

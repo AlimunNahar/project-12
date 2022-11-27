@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import BookingModal from "./BookingModal";
 
 const Categories = () => {
   const products = useLoaderData();
-  // const [category, setCategoryName] = useState([]);
+  const [productsInfo, setProductsInfo] = useState("");
+  // console.log(productsInfo);
+
   const category = products.map((cat) => cat.category_name)[0];
   // console.log(category);
   return (
@@ -11,11 +14,11 @@ const Categories = () => {
       <div className="divider text-3xl text-cyan-500 my-16">{category}</div>
       <div className="col-span-2 mx-8 mt-5">
         {products.map((product) => (
-          <>
+          <div key={product._id}>
             <div className="card lg:card-side bg-base-100 shadow-xl mb-8  rounded-xl ">
-              <div className="card w-full md:w-full lg:w-6/12 image-full">
+              <div className="lg:card w-full md:w-full lg:w-6/12 image-full">
                 <figure>
-                  <img src={product?.img} alt="Shoes" />
+                  <img src={product?.img} alt="product_image" />
                 </figure>
                 <div className="card-body my-auto hidden lg:block">
                   <h2 className="card-title text-4xl text-accent">
@@ -58,14 +61,22 @@ const Categories = () => {
                 <p className="text-red-400">{product?.notice}</p>
 
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary rounded hover:bg-accent">
+                  <label
+                    onClick={() => setProductsInfo(product)}
+                    htmlFor="my-bookings"
+                    className="btn bg-primary hover:bg-accent rounded"
+                  >
                     Book Now
-                  </button>
+                  </label>
                 </div>
               </div>
             </div>
             <div className="divider mb-8"></div>
-          </>
+            <BookingModal
+              productInfo={productsInfo}
+              setProductsInfo={setProductsInfo}
+            />
+          </div>
         ))}
       </div>
     </div>

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Banner from "./Banner";
 import CategoryCards from "./CategoryCards";
+import ExtraHomeSection from "./ExtraHomeSection";
 
 const Home = () => {
   const date = new Date().toDateString().split(" ");
@@ -50,6 +51,7 @@ const Home = () => {
           </p>
         </div>
       </div>
+      <ExtraHomeSection />
     </div>
   );
 };

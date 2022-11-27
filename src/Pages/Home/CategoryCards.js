@@ -4,7 +4,7 @@ import "../../Styles/style.css";
 
 const CategoryCards = ({ category }) => {
   const { category_name, image, _id } = category;
-  console.log(category);
+  // console.log(category);
   return (
     <div className="card w-auto bg-base-100 shadow-xl rounded-xl shadow-effect">
       <div className="card-body bg-primary rounded">
