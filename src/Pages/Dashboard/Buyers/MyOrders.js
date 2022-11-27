@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
@@ -12,6 +13,7 @@ const MyOrders = () => {
         `http://localhost:5000/bookedItems?email=${user?.email}`
       );
       const data = await res.json();
+      console.log(data);
       return data;
     },
   });
@@ -19,6 +21,38 @@ const MyOrders = () => {
   return (
     <div className="mx-5">
       <div className="divider text-4xl text-cyan-400 my-12">My Orders</div>
+      <div className="overflow-x-auto">
+        <table className="table w-full">
+          <thead className="">
+            <tr className="text-accent">
+              <th></th>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Meeting Location</th>
+              <th>Resale Price</th>
+              <th>Payment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookedItems.map((item, idx) => (
+              <tr key={idx}>
+                <th>{idx + 1}</th>
+                <td>{item?.image}</td>
+                <td>{item.product_name}</td>
+                <td>{item.location}</td>
+                <td>{item.resale_price}</td>
+                <td>
+                  <Link to="">
+                    <button className="btn btn-sm btn-primary hover:glass">
+                      Pay
+                    </button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
