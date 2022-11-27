@@ -7,7 +7,7 @@ const useBuyer = (email) => {
   useEffect(() => {
     if (email) {
       fetch(`http://localhost:5000/users/seller/${email}`)
-        .then((res) => res.send())
+        .then((res) => res.json())
         .then((data) => {
           // console.log(data);
           setIsSeller(data.isBuyer);

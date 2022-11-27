@@ -4,12 +4,12 @@ import Main from "../../layout/Main";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import Blog from "../../Pages/Blog/Blog";
-import MyOrders from "../../Pages/MyOrders/MyOrders";
+import MyOrders from "../../Pages/Dashboard/Buyers/MyOrders";
 import Categories from "../../Pages/Categories/Categories";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import DashboardLayout from "../../layout/DashboardLayout";
-import BuyerRoute from "./BuyerRoute";
+import BuyerRoute from "../Routes/BuyerRoute";
 
 const router = createBrowserRouter([
   {
@@ -58,12 +58,8 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard/",
-        element: (
-          <BuyerRoute>
-            <></>
-          </BuyerRoute>
-        ),
+        path: "/dashboard",
+        element: <MyOrders />,
       },
     ],
   },
