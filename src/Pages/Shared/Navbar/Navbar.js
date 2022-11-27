@@ -50,7 +50,7 @@ const Navbar = () => {
         </ul>
       </li>
       <li className="hover:text-accent ">
-        <Link to="/myOrders">My Orders</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
       <li className="hover:text-accent ">
         <Link to="/blog">Blog</Link>

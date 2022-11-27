@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 import BookingModal from "./BookingModal";
 
 const Categories = () => {
+  useTitle("Products");
   const products = useLoaderData();
   const [productsInfo, setProductsInfo] = useState("");
   // console.log(productsInfo);

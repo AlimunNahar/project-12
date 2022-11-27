@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import useTitle from "../../Hooks/useTitle";
 import Banner from "./Banner";
 import CategoryCards from "./CategoryCards";
 import ExtraHomeSection from "./ExtraHomeSection";
 
 const Home = () => {
-  const date = new Date().toDateString().split(" ");
-  const formatedDate = [date[2], date[1], date[3]].join(" ");
-  console.log(formatedDate);
+  useTitle("Home");
 
   const [categories, setCategories] = useState([]);
 

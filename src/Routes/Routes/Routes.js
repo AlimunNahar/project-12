@@ -7,11 +7,13 @@ import Blog from "../../Pages/Blog/Blog";
 import MyOrders from "../../Pages/MyOrders/MyOrders";
 import Categories from "../../Pages/Categories/Categories";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <DisplayError />,
     children: [
       {
         path: "/",
