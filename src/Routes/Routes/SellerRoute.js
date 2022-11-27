@@ -4,7 +4,7 @@ import useBuyer from "../../Hooks/useBuyer";
 import { Navigate, useLocation } from "react-router-dom";
 import Loading from "../../Pages/Shared/Loading/Loading";
 
-const BuyerRoute = ({ children }) => {
+const SellerRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const [isSeller, isSellerLoading] = useBuyer(user?.email);
   const location = useLocation();
@@ -25,4 +25,4 @@ const BuyerRoute = ({ children }) => {
   return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
-export default BuyerRoute;
+export default SellerRoute;

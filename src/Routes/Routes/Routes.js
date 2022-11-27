@@ -8,7 +8,8 @@ import MyOrders from "../../Pages/MyOrders/MyOrders";
 import Categories from "../../Pages/Categories/Categories";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
-import DashboardLayout from "../../Pages/Dashboard/DashboardLayout";
+import DashboardLayout from "../../layout/DashboardLayout";
+import BuyerRoute from "./BuyerRoute";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/",
+        element: (
+          <BuyerRoute>
+            <></>
+          </BuyerRoute>
+        ),
       },
     ],
   },
