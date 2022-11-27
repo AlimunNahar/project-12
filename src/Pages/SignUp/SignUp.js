@@ -87,7 +87,7 @@ const SignUp = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         const socialUser = {
           name: user.displayName,
           email: user.email,
@@ -104,12 +104,9 @@ const SignUp = () => {
           })
             .then((res) => res.json())
             .then((result) => {
-              console.log(result);
-              toast.success("User created successfully");
-              reset();
+              // console.log(result);
               navigate(from, { replace: true });
             });
-          navigate(from, { replace: true });
         }
       })
       .catch((error) => console.error(error));

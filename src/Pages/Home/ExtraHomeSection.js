@@ -5,7 +5,7 @@ const ExtraHomeSection = () => {
   return (
     <div className="-mx-5">
       <div className="card lg:card-side bg-primary shadow-xl">
-        <div className="my-8 md:my-auto lg:my-auto px-6 text-center lg:w-6/12">
+        <div className="py-8 md:my-auto lg:my-auto px-6 text-center lg:w-6/12">
           <h2 className="text-5xl mb-2 font-bold ">
             Furnish forward
             <br /> and sustain forests

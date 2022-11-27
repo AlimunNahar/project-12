@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import useTitle from "../../Hooks/useTitle";
 import "../../Styles/style.css";
 import { FaUserCircle } from "react-icons/fa";
@@ -8,7 +8,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useForm } from "react-hook-form";
-import { data } from "autoprefixer";
 
 const Login = () => {
   useTitle("Login");
@@ -50,9 +49,25 @@ const Login = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        // console.log(user);
+        const socialUser = {
+          name: user.displayName,
+          email: user.email,
+          role: "buyer",
+          image: user.photoURL,
+        };
         if (user) {
-          navigate(from, { replace: true });
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(socialUser),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              // console.log(result);
+              navigate(from, { replace: true });
+            });
         }
       })
       .catch((error) => console.error(error));
