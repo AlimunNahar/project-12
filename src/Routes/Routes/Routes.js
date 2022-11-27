@@ -8,6 +8,7 @@ import MyOrders from "../../Pages/MyOrders/MyOrders";
 import Categories from "../../Pages/Categories/Categories";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
+import DashboardLayout from "../../Pages/Dashboard/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,19 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/",
       },
     ],
   },
