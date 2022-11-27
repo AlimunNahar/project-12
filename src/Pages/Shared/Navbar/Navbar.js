@@ -1,10 +1,19 @@
-import React, { useContext } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import "../../../Styles/style.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/categories")
+      .then((res) => setCategories(res.data))
+      .catch((error) => console.error(error));
+  }, []);
 
   const handleLogOut = () => {
     logOut()
@@ -18,7 +27,7 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li tabIndex={0}>
-        <Link className="hover:text-accent ">
+        <Link className="hover:text-accent">
           Categories
           <svg
             className="fill-current"
@@ -30,16 +39,14 @@ const Navbar = () => {
             <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
           </svg>
         </Link>
-        <ul className="p-2 bg-base-100">
-          <li className="hover:text-accent">
-            <Link>Submenu 1</Link>
-          </li>
-          <li className="hover:text-accent">
-            <Link>Submenu 2</Link>
-          </li>
-          <li className="hover:text-accent">
-            <Link>Submenu 2</Link>
-          </li>
+        <ul className="p-2 bg-base-100 ">
+          {categories.map((category) => (
+            <li key={category._id} className="hover:text-accent">
+              <Link to={`/products/${category._id}`}>
+                {category.category_name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </li>
       <li className="hover:text-accent ">
@@ -86,7 +93,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+        <ul className="menu menu-horizontal p-0 z-40">{menuItems}</ul>
       </div>
 
       <div className="navbar-end">
