@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Pure Snuggle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Live Website Link:
 
-## Available Scripts
+## https://pure-snuggle.web.app/blog
 
-In the project directory, you can run:
+# Client Side Repository:
 
-### `npm start`
+## https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-AlimunNahar
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Server Side Repository:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-AlimunNahar
 
-### `npm test`
+# adminEmail: \<alimun@gmail.com\>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# adminPassword: \<A@123456\>
 
-### `npm run build`
+# Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- This is a second hand furniture selling website.
+- This single website is build for three types of users. Buyers, Sellers and admin.
+- Buyer will get access only for Private route and buyer's own orders Named- MY Orders
+- Seller will be able to add a new product and advertise a product which will later display to home page's advertise section.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Admin will get two option one is all buyers and all sellers.
+* Admin can delete any Seller or Buyer from database.
+* Some features are still uncompleted in this project as i'm still working on it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Used Frameworks and Libraries
 
-### `npm run eject`
+- ReactJS
+- React Hooks
+- React hot toast
+- React Router Dom
+- axios
+- React Query
+- Tailwind
+- DaisyUI
+- Firebase
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## For Server side:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- NodeJS
+- Cors
+- ExpressJS
+- Dotenv
+- MongoDB
