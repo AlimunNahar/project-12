@@ -12,7 +12,6 @@ const Navbar = () => {
   const [categories, setCategories] = useState([]);
   const [isBuyer] = useBuyer(user?.email);
   const [isSeller] = useSeller(user?.email);
-  console.log(isSeller);
   const [isAdmin] = useAdmin(user?.email);
 
   useEffect(() => {

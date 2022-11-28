@@ -40,6 +40,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/payment",
+        element: (
+          <BuyerRoute>
+            < />
+          </BuyerRoute>
+        ),
+      },
+      {
         path: "/blog",
         element: <Blog />,
       },
