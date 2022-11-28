@@ -28,10 +28,6 @@ const Navbar = () => {
       .catch((error) => console.error(error));
   };
 
-  if (loading) {
-    return <Loading />;
-  }
-
   const menuItems = (
     <React.Fragment>
       <li className="hover:text-accent">
@@ -83,6 +79,9 @@ const Navbar = () => {
           </li>
           <li className="hover:text-accent ">
             <Link to="/allBuyers">All Buyers</Link>
+          </li>
+          <li className="hover:text-accent ">
+            <Link to="/reportedItems">Reported Items</Link>
           </li>
         </>
       )}

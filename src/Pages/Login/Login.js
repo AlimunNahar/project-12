@@ -16,7 +16,6 @@ const Login = () => {
     register,
     formState: { errors },
     handleSubmit,
-    reset,
   } = useForm();
 
   const { signIn, providerLogin } = useContext(AuthContext);
@@ -32,7 +31,6 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         if (user) {
-          reset();
           navigate(from, { replace: true });
         }
       })
@@ -102,9 +100,13 @@ const Login = () => {
                   className="input-box"
                 />
               </div>
-              {errors.email && (
-                <p className="text-red-500 text-sm">{errors.email?.message}</p>
-              )}
+              <label>
+                {errors.email && (
+                  <p className="text-red-500 text-sm">
+                    {errors.email?.message}
+                  </p>
+                )}
+              </label>
             </div>
             <div className="form-control">
               <label className="label">
