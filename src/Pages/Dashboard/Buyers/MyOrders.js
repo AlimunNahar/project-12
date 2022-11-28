@@ -12,7 +12,7 @@ const MyOrders = () => {
     queryKey: ["bookedItems", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/bookedItems?email=${user?.email}`
+        `https://puresnuggle-server.vercel.app/bookedItems?email=${user?.email}`
       );
       const data = await res.json();
       // console.log(data);

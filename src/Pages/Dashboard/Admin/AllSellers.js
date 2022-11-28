@@ -8,7 +8,9 @@ const AllSellers = () => {
   const { data: sellers = [], refetch } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/allSellers");
+      const res = await fetch(
+        "https://puresnuggle-server.vercel.app/allSellers"
+      );
       const data = await res.json();
       // console.log(data);
       return data;
@@ -17,7 +19,7 @@ const AllSellers = () => {
 
   const handleDelete = (seller) => {
     // console.log(seller);
-    fetch(`http://localhost:5000/seller/${seller._id}`, {
+    fetch(`https://puresnuggle-server.vercel.app/seller/${seller._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

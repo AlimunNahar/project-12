@@ -54,7 +54,7 @@ const Login = () => {
           image: user.photoURL,
         };
         if (user) {
-          fetch("http://localhost:5000/users", {
+          fetch("https://puresnuggle-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -26,7 +26,7 @@ const BookingModal = ({ productInfo, setProductsInfo }) => {
     // console.log(booking);
 
     // send booked products data to the server
-    fetch("http://localhost:5000/bookedItems", {
+    fetch("https://puresnuggle-server.vercel.app/bookedItems", {
       method: "POST",
       headers: {
         "content-type": "application/json",

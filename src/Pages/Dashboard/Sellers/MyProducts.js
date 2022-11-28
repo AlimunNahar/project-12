@@ -13,7 +13,7 @@ const MyProducts = () => {
     queryKey: ["products", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/products?email=${user?.email}`
+        `https://puresnuggle-server.vercel.app/products?email=${user?.email}`
       );
       const data = await res.json();
       // console.log(data);
@@ -29,7 +29,7 @@ const MyProducts = () => {
       img: item.img,
     };
 
-    fetch("http://localhost:5000/advertise", {
+    fetch("https://puresnuggle-server.vercel.app/advertise", {
       method: "POST",
       headers: {
         "content-type": "application/json",

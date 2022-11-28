@@ -9,7 +9,9 @@ const AllBuyers = () => {
   const { data: buyers = [], refetch } = useQuery({
     queryKey: ["buyers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/allBuyers");
+      const res = await fetch(
+        "https://puresnuggle-server.vercel.app/allBuyers"
+      );
       const data = await res.json();
       // console.log(data);
       return data;
@@ -18,7 +20,7 @@ const AllBuyers = () => {
 
   const handleDelete = (buyer) => {
     // console.log(buyer);
-    fetch(`http://localhost:5000/buyer/${buyer._id}`, {
+    fetch(`https://puresnuggle-server.vercel.app/buyer/${buyer._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

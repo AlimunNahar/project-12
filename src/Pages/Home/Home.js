@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/categories")
+      .get("https://puresnuggle-server.vercel.app/categories")
       .then((res) => setCategories(res.data))
       .catch((error) => console.error(error));
   }, []);

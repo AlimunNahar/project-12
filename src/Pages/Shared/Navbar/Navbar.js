@@ -16,18 +16,18 @@ const Navbar = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/categories")
+      .get("https://puresnuggle-server.vercel.app/categories")
       .then((res) => setCategories(res.data))
       .catch((error) => console.error(error));
   }, []);
 
-  if (loading) {
-    return <span></span>;
-  }
-
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        if (loading) {
+          return <span></span>;
+        }
+      })
       .catch((error) => console.error(error));
   };
 

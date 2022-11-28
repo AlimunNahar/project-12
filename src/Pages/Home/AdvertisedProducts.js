@@ -7,7 +7,9 @@ const AdvertisedProducts = () => {
   const { data: advertisedProducts = [] } = useQuery({
     queryKey: ["advertisedProducts"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/advertisedProducts");
+      const res = await fetch(
+        "https://puresnuggle-server.vercel.app/advertisedProducts"
+      );
       const data = await res.json();
       // console.log(data);
       return data;
