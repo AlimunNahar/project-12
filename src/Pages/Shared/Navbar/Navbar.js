@@ -2,11 +2,18 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import useBuyer from "../../../Hooks/useBuyer";
+import useSeller from "../../../Hooks/useSeller";
+import useAdmin from "../../../Hooks/useAdmin";
 import "../../../Styles/style.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
+  const [isBuyer] = useBuyer(user?.email);
+  const [isSeller] = useSeller(user?.email);
+  console.log(isSeller);
+  const [isAdmin] = useAdmin(user?.email);
 
   useEffect(() => {
     axios
@@ -49,9 +56,27 @@ const Navbar = () => {
           ))}
         </ul>
       </li>
-      <li className="hover:text-accent ">
-        <Link to="/dashboard">Dashboard</Link>
-      </li>
+      {isBuyer && (
+        <li className="hover:text-accent ">
+          <Link to="/myOrders">My Orders</Link>
+        </li>
+      )}
+      {isSeller && (
+        <>
+          <li className="hover:text-accent ">
+            <Link to="/addProduct">Add A Product</Link>
+          </li>
+          <li className="hover:text-accent ">
+            <Link to="/myProducts">My Products</Link>
+          </li>
+        </>
+      )}
+
+      {isAdmin && (
+        <li className="hover:text-accent ">
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+      )}
       <li className="hover:text-accent ">
         <Link to="/blog">Blog</Link>
       </li>

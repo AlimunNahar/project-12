@@ -33,7 +33,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myOrders",
-        element: <MyOrders />,
+        element: (
+          <BuyerRoute>
+            <MyOrders />
+          </BuyerRoute>
+        ),
       },
       {
         path: "/blog",
@@ -56,12 +60,7 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
-    children: [
-      {
-        path: "/dashboard",
-        element: <MyOrders />,
-      },
-    ],
+    children: [],
   },
 ]);
 

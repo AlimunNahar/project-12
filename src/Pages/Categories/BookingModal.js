@@ -4,7 +4,8 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 const BookingModal = ({ productInfo, setProductsInfo }) => {
   const { user } = useContext(AuthContext);
-  const { product_name, resale_price } = productInfo;
+  const { product_name, resale_price, img } = productInfo;
+  // console.log(productInfo);
 
   const handleBooking = (event) => {
     event.preventDefault();
@@ -20,6 +21,7 @@ const BookingModal = ({ productInfo, setProductsInfo }) => {
       phone,
       location,
       resale_price,
+      img,
     };
     // console.log(booking);
 
@@ -83,8 +85,11 @@ const BookingModal = ({ productInfo, setProductsInfo }) => {
               required
             />
 
-            <select name="location" className="select select-bordered w-full">
-              <option selected>Meeting Location</option>
+            <select
+              name="location"
+              className="select select-bordered w-full"
+              required
+            >
               <option value="Dhaka">Dhaka</option>
               <option value="Chattogram">Chattogram</option>
               <option value="Barishal">Barishal</option>
