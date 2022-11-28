@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import toast from "react-hot-toast";
 import useTitle from "../../../Hooks/useTitle";
 
 const AllSellers = () => {
   useTitle("AllSellers");
-  const { data: sellers = [] } = useQuery({
+  const { data: sellers = [], refetch } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/allSellers");
@@ -16,7 +17,16 @@ const AllSellers = () => {
 
   const handleDelete = (seller) => {
     // console.log(seller);
-    fetch(`http://localhost:5000/seller/${seller._id}`);
+    fetch(`http://localhost:5000/seller/${seller._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success("Seller deleted successfully!");
+        }
+      });
   };
 
   return (

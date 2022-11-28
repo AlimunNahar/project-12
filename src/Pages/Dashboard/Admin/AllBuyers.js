@@ -11,7 +11,7 @@ const AllBuyers = () => {
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/allBuyers");
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       return data;
     },
   });
@@ -31,7 +31,7 @@ const AllBuyers = () => {
   };
   return (
     <div className="mx-5">
-      <div className="divider text-4xl text-cyan-400 my-12">My Products</div>
+      <div className="divider text-4xl text-cyan-400 my-12">All Buyers</div>
       <div className="overflow-x-auto mb-12">
         {buyers.length ? (
           <table className="table w-full">
