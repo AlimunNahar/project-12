@@ -9,10 +9,15 @@ const AllSellers = () => {
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/allSellers");
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       return data;
     },
   });
+
+  const handleDelete = (seller) => {
+    // console.log(seller);
+    fetch(`http://localhost:5000/seller/${seller._id}`);
+  };
 
   return (
     <div className="mx-5">
@@ -23,9 +28,9 @@ const AllSellers = () => {
             <thead className="">
               <tr className="text-accent">
                 <th></th>
-                <th>Image</th>
                 <th>Seller Name</th>
                 <th>Email</th>
+                <th>Verification</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -33,21 +38,16 @@ const AllSellers = () => {
               {sellers.map((seller, idx) => (
                 <tr className="hover" key={idx}>
                   <th>{idx + 1}</th>
-                  <td>
-                    {seller?.img ? (
-                      <div className="avatar">
-                        <div className="w-16 rounded-full">
-                          <img src={seller?.img} alt="" />
-                        </div>
-                      </div>
-                    ) : (
-                      "No image"
-                    )}
-                  </td>
                   <td>{seller?.name}</td>
                   <td>{seller?.email}</td>
                   <td>
-                    <button className="btn btn-circle btn-outline">
+                    <span className="text-sm">Unverified</span>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(seller)}
+                      className="btn btn-circle btn-outline"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
