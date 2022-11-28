@@ -24,6 +24,20 @@
   outline: none;
 }
 
+.background {
+  background-color: rgb(181, 191, 204);
+}
+
+.add-product-input {
+  border-bottom: 2px solid orange;
+}
+
+.add-product-input:hover {
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 50px 100px -20px,
+    rgba(238, 228, 228, 0.3) 0px 30px 60px -30px,
+    rgba(232, 232, 232, 0.35) 0px -2px 6px 0px inset;
+}
+
 .shadow-effect {
   box-shadow: 0 0 20px rgba(111, 110, 110, 0.8);
 }
