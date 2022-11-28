@@ -6,7 +6,6 @@ import useBuyer from "../../../Hooks/useBuyer";
 import useSeller from "../../../Hooks/useSeller";
 import useAdmin from "../../../Hooks/useAdmin";
 import "../../../Styles/style.css";
-import Loading from "../Loading/Loading";
 
 const Navbar = () => {
   const { user, logOut, loading } = useContext(AuthContext);
@@ -21,6 +20,10 @@ const Navbar = () => {
       .then((res) => setCategories(res.data))
       .catch((error) => console.error(error));
   }, []);
+
+  if (loading) {
+    return <span></span>;
+  }
 
   const handleLogOut = () => {
     logOut()

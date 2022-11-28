@@ -5,7 +5,6 @@ import { GrCheckboxSelected } from "react-icons/gr";
 import { BiLink, BiUser } from "react-icons/bi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
-import "../../Styles/register.css";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useForm } from "react-hook-form";
@@ -55,7 +54,7 @@ const SignUp = () => {
           })
             .then((res) => res.json())
             .then((result) => {
-              console.log(result);
+              // console.log(result);
               toast.success("User created successfully");
               reset();
               navigate(from, { replace: true });

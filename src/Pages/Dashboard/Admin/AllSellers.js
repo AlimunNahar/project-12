@@ -31,7 +31,7 @@ const AllSellers = () => {
 
   return (
     <div className="mx-5">
-      <div className="divider text-4xl text-cyan-400 my-12">My Products</div>
+      <div className="divider text-4xl text-cyan-400 my-12">All Sellers</div>
       <div className="overflow-x-auto mb-12">
         {sellers.length ? (
           <table className="table w-full">
