@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 
 const MyOrders = () => {
+  useTitle("MyOrders");
   const { user } = useContext(AuthContext);
 
   const { data: bookedItems = [] } = useQuery({

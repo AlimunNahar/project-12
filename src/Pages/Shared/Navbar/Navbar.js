@@ -72,9 +72,11 @@ const Navbar = () => {
       )}
 
       {isAdmin && (
-        <li className="hover:text-accent ">
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
+        <>
+          <li className="hover:text-accent ">
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+        </>
       )}
       <li className="hover:text-accent ">
         <Link to="/blog">Blog</Link>

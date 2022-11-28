@@ -10,6 +10,10 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import DashboardLayout from "../../layout/DashboardLayout";
 import BuyerRoute from "../Routes/BuyerRoute";
+import Payment from "../../Pages/Dashboard/Buyers/Payment";
+import AddAProduct from "../../Pages/Dashboard/Sellers/AddAProduct";
+import SellerRoute from "./SellerRoute";
+import MyProducts from "../../Pages/Dashboard/Sellers/MyProducts";
 
 const router = createBrowserRouter([
   {
@@ -43,8 +47,24 @@ const router = createBrowserRouter([
         path: "/payment",
         element: (
           <BuyerRoute>
-            < />
+            <Payment />
           </BuyerRoute>
+        ),
+      },
+      {
+        path: "/addProduct",
+        element: (
+          <SellerRoute>
+            <AddAProduct />
+          </SellerRoute>
+        ),
+      },
+      {
+        path: "/myProducts",
+        element: (
+          <SellerRoute>
+            <MyProducts />
+          </SellerRoute>
         ),
       },
       {
