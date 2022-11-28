@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AiOutlineLock } from "react-icons/ai";
 import { MdAlternateEmail } from "react-icons/md";
 import { GrCheckboxSelected } from "react-icons/gr";
