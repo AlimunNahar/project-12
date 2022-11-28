@@ -4,8 +4,10 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import "../../../Styles/style.css";
 import { useNavigate } from "react-router-dom";
+import useTitle from "../../../Hooks/useTitle";
 
 const AddAProduct = () => {
+  useTitle("AddProduct");
   const { user } = useContext(AuthContext);
   const {
     register,

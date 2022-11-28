@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useTitle from "../../Hooks/useTitle";
+import AdvertisedProducts from "./AdvertisedProducts";
 import Banner from "./Banner";
 import CategoryCards from "./CategoryCards";
 import ExtraHomeSection from "./ExtraHomeSection";
@@ -38,17 +39,7 @@ const Home = () => {
         </div>
 
         {/* advertised section  */}
-        <div>
-          <div className="divider text-3xl my-8 mt-20 text-cyan-500">
-            Advertised Products
-          </div>
-
-          <p className="text-center italic mb-10">
-            Give your home a second chance & decorate the home
-            <br />
-            with the beautiful creation of wood
-          </p>
-        </div>
+        <AdvertisedProducts />
       </div>
       <ExtraHomeSection />
     </div>
