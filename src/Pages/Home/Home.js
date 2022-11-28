@@ -1,6 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
 import useTitle from "../../Hooks/useTitle";
+import Loading from "../Shared/Loading/Loading";
 import AdvertisedProducts from "./AdvertisedProducts";
 import Banner from "./Banner";
 import CategoryCards from "./CategoryCards";
@@ -10,6 +12,7 @@ const Home = () => {
   useTitle("Home");
 
   const [categories, setCategories] = useState([]);
+  const { loading } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -18,6 +21,9 @@ const Home = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="mx-5">
       <Banner />

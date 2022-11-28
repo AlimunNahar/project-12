@@ -23,7 +23,7 @@ const Categories = () => {
                   <img src={product?.img} alt="product_image" />
                 </figure>
                 <div className="card-body my-auto hidden lg:block">
-                  <h2 className="card-title text-4xl text-accent">
+                  <h2 className="card-title text-4xl mb-4 text-accent">
                     {product.product_name}
                   </h2>
                   <p className="text-justify">{product?.description}</p>

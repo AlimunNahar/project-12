@@ -1,8 +1,6 @@
 import React from "react";
-import useTitle from "../../../Hooks/useTitle";
 
 const Payment = () => {
-  useTitle("Payment");
   return (
     <div className="bg-white">
       <img

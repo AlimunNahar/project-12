@@ -6,9 +6,10 @@ import useBuyer from "../../../Hooks/useBuyer";
 import useSeller from "../../../Hooks/useSeller";
 import useAdmin from "../../../Hooks/useAdmin";
 import "../../../Styles/style.css";
+import Loading from "../Loading/Loading";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, loading } = useContext(AuthContext);
   const [categories, setCategories] = useState([]);
   const [isBuyer] = useBuyer(user?.email);
   const [isSeller] = useSeller(user?.email);
@@ -26,6 +27,10 @@ const Navbar = () => {
       .then(() => {})
       .catch((error) => console.error(error));
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const menuItems = (
     <React.Fragment>
@@ -74,7 +79,10 @@ const Navbar = () => {
       {isAdmin && (
         <>
           <li className="hover:text-accent ">
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/allSellers">All Sellers</Link>
+          </li>
+          <li className="hover:text-accent ">
+            <Link to="/allBuyers">All Buyers</Link>
           </li>
         </>
       )}

@@ -4,13 +4,12 @@ import "../../Styles/style.css";
 import { Link } from "react-router-dom";
 
 const AdvertisedProducts = () => {
-  const { data: advertisedProducts = [], refetch } = useQuery({
+  const { data: advertisedProducts = [] } = useQuery({
     queryKey: ["advertisedProducts"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/advertisedProducts");
       const data = await res.json();
       console.log(data);
-      refetch();
       return data;
     },
   });
@@ -43,8 +42,8 @@ const AdvertisedProducts = () => {
                 <figure>
                   <img
                     src={product.img}
-                    className="h-80 object-fill"
-                    alt="Shoes"
+                    className="h-80 object-cover w-full"
+                    alt="advertised"
                   />
                 </figure>
               </div>

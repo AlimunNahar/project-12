@@ -8,12 +8,14 @@ import MyOrders from "../../Pages/Dashboard/Buyers/MyOrders";
 import Categories from "../../Pages/Categories/Categories";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
-import DashboardLayout from "../../layout/DashboardLayout";
 import BuyerRoute from "../Routes/BuyerRoute";
 import Payment from "../../Pages/Dashboard/Buyers/Payment";
 import AddAProduct from "../../Pages/Dashboard/Sellers/AddAProduct";
 import SellerRoute from "./SellerRoute";
 import MyProducts from "../../Pages/Dashboard/Sellers/MyProducts";
+import AdminRoute from "./AdminRoute";
+import AllSellers from "../../Pages/Dashboard/Admin/AllSellers";
+import AllBuyers from "../../Pages/Dashboard/Admin/AllBuyers";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +70,22 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/allSellers",
+        element: (
+          <AdminRoute>
+            <AllSellers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/allBuyers",
+        element: (
+          <AdminRoute>
+            <AllBuyers />
+          </AdminRoute>
+        ),
+      },
+      {
         path: "/blog",
         element: <Blog />,
       },
@@ -80,15 +98,6 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
     ],
-  },
-  {
-    path: "/dashboard",
-    element: (
-      <PrivateRoute>
-        <DashboardLayout />
-      </PrivateRoute>
-    ),
-    children: [],
   },
 ]);
 

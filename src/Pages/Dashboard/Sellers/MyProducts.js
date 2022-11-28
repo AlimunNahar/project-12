@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
@@ -7,7 +7,6 @@ import useTitle from "../../../Hooks/useTitle";
 const MyProducts = () => {
   useTitle("MyProducts");
   const { user } = useContext(AuthContext);
-  const [disable, setDisable] = useState("disabled");
   // console.log(disable);
 
   const { data: items = [] } = useQuery({
@@ -22,7 +21,7 @@ const MyProducts = () => {
     },
   });
 
-  const handleAdd = (item) => {
+  const handleAdd = (item, event) => {
     // console.log(item);
 
     const product = {
@@ -41,7 +40,6 @@ const MyProducts = () => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("Your product will advertise to home page");
-          setDisable("");
         } else {
           toast.error(data.message);
         }
@@ -93,7 +91,7 @@ const MyProducts = () => {
                   <td>
                     <button
                       onClick={() => handleAdd(item)}
-                      className={`btn btn-sm btn-primary hover:glass ${disable}`}
+                      className="btn btn-sm btn-primary hover:glass"
                     >
                       Advertise
                     </button>
