@@ -2,7 +2,7 @@
 
 # Live Website Link:
 
-## https://pure-snuggle.web.app/blog
+## https://pure-snuggle.web.app
 
 # Client Side Repository:
 
