@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import toast from "react-hot-toast";
 import useTitle from "../../../Hooks/useTitle";
+import Navbar from "../../Shared/Navbar/Navbar";
 
 const AllBuyers = () => {
   useTitle("AllBuyers");
@@ -32,55 +33,58 @@ const AllBuyers = () => {
       });
   };
   return (
-    <div className="mx-5">
-      <div className="divider text-4xl text-cyan-400 my-12">All Buyers</div>
-      <div className="overflow-x-auto mb-12">
-        {buyers.length ? (
-          <table className="table w-full">
-            <thead className="">
-              <tr className="text-accent">
-                <th></th>
-                <th>Seller Name</th>
-                <th>Email</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {buyers.map((buyer, idx) => (
-                <tr className="hover" key={idx}>
-                  <th>{idx + 1}</th>
-                  <td>{buyer?.name}</td>
-                  <td>{buyer?.email}</td>
-                  <td>
-                    <button
-                      onClick={() => handleDelete(buyer)}
-                      className="btn btn-circle btn-outline"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
-                  </td>
+    <div>
+      <Navbar />
+      <div className="mx-5">
+        <div className="divider text-4xl text-cyan-400 my-12">All Buyers</div>
+        <div className="overflow-x-auto mb-12">
+          {buyers.length ? (
+            <table className="table w-full">
+              <thead className="">
+                <tr className="text-accent">
+                  <th></th>
+                  <th>Seller Name</th>
+                  <th>Email</th>
+                  <th>Delete</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <h2 className="text-lg text-center my-5">
-            You haven't started selling yet!
-          </h2>
-        )}
+              </thead>
+              <tbody>
+                {buyers.map((buyer, idx) => (
+                  <tr className="hover" key={idx}>
+                    <th>{idx + 1}</th>
+                    <td>{buyer?.name}</td>
+                    <td>{buyer?.email}</td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(buyer)}
+                        className="btn btn-circle btn-outline"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <h2 className="text-lg text-center my-5">
+              You haven't started selling yet!
+            </h2>
+          )}
+        </div>
       </div>
     </div>
   );

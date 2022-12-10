@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import useTitle from "../../Hooks/useTitle";
+import Navbar from "../Shared/Navbar/Navbar";
 import BookingModal from "./BookingModal";
 
 const Categories = () => {
@@ -13,6 +14,7 @@ const Categories = () => {
   // console.log(category);
   return (
     <div>
+      <Navbar />
       <div className="divider text-3xl text-cyan-500 my-16">{category}</div>
       <div className="col-span-2 mx-8 mt-5">
         {products.map((product) => (

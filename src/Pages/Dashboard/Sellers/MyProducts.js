@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
+import Navbar from "../../Shared/Navbar/Navbar";
 
 const MyProducts = () => {
   useTitle("MyProducts");
@@ -47,64 +48,67 @@ const MyProducts = () => {
   };
 
   return (
-    <div className="mx-5">
-      <div className="divider text-4xl text-cyan-400 my-12">My Products</div>
-      <div className="overflow-x-auto mb-12">
-        {items.length ? (
-          <table className="table w-full">
-            <thead className="">
-              <tr className="text-accent">
-                <th></th>
-                <th>Image</th>
-                <th>Product Name</th>
-                <th>Availability</th>
-                <th>Availability</th>
-                <th>Advertise</th>
-              </tr>
-            </thead>
-            <tbody>
-              {items.map((item, idx) => (
-                <tr className="hover" key={idx}>
-                  <th>{idx + 1}</th>
-                  <td>
-                    {item?.img ? (
-                      <div className="avatar">
-                        <div className="w-16 rounded-full">
-                          <img src={item?.img} alt="" />
-                        </div>
-                      </div>
-                    ) : (
-                      "No image"
-                    )}
-                  </td>
-                  <td>{item?.product_name}</td>
-                  <td>
-                    <button className="btn btn-sm btn-primary hover:glass">
-                      Available
-                    </button>
-                  </td>
-                  <td>
-                    <button className="btn btn-sm btn-accent hover:glass">
-                      Sold
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => handleAdd(item)}
-                      className="btn btn-sm btn-primary hover:glass"
-                    >
-                      Advertise
-                    </button>
-                  </td>
+    <div>
+      <Navbar />
+      <div className="mx-5">
+        <div className="divider text-4xl text-cyan-400 my-12">My Products</div>
+        <div className="overflow-x-auto mb-12">
+          {items.length ? (
+            <table className="table w-full">
+              <thead className="">
+                <tr className="text-accent">
+                  <th></th>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Availability</th>
+                  <th>Availability</th>
+                  <th>Advertise</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <h2 className="text-lg text-center my-5">
-            You haven't started selling yet!
-          </h2>
-        )}
+              </thead>
+              <tbody>
+                {items.map((item, idx) => (
+                  <tr className="hover" key={idx}>
+                    <th>{idx + 1}</th>
+                    <td>
+                      {item?.img ? (
+                        <div className="avatar">
+                          <div className="w-16 rounded-full">
+                            <img src={item?.img} alt="" />
+                          </div>
+                        </div>
+                      ) : (
+                        "No image"
+                      )}
+                    </td>
+                    <td>{item?.product_name}</td>
+                    <td>
+                      <button className="btn btn-sm btn-primary hover:glass">
+                        Available
+                      </button>
+                    </td>
+                    <td>
+                      <button className="btn btn-sm btn-accent hover:glass">
+                        Sold
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleAdd(item)}
+                        className="btn btn-sm btn-primary hover:glass"
+                      >
+                        Advertise
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <h2 className="text-lg text-center my-5">
+              You haven't started selling yet!
+            </h2>
+          )}
+        </div>
       </div>
     </div>
   );
